@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulance Tracking Map</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwqaXz2_rk6ImdwGc7qT20P8NBu4Z1Yx8&libraries=geometry"></script>
+</head>
+<body>
+    <!-- Hamburger Menu -->
+    <div class="menu-btn">
+        <div class="menu-btn__burger"></div>
+    </div>
+    <nav class="menu">
+        <ul>
+            <li><a href="map.html">Request Ambulance</a></li>
+            <li><a href="emergency.html">Emergency Call</a></li>
+            <li><a href="chat.html">Chat Box</a></li>
+            <li><a href="subscription page.html">Packages</a></li>
+        </ul>
+    </nav>
+
+    <div id="map" style="height: 500px; width: 100%;"></div>
+
+    <div id="searchContainer">
+        <input type="text" id="searchInput" placeholder="Search for a hospital" oninput="filterHospitals()">
+        <div id="dropdownList">
+            <select id="hospitalSelect">
+                <option value="" disabled selected>Select Hospital</option>
+                <option value="Groot Schuur Hospital">Groot Schuur Hospital</option>
+                <option value="Khayelitsha Community Clinic">Khayelitsha Community Clinic</option>
+                <option value="Tygerberg Hospital">Tygerberg Hospital</option>
+                <option value="Victoria Hospital">Victoria Hospital</option>
+                <option value="Red Cross War Memorial Children's Hospital">Red Cross War Memorial Children's Hospital</option>
+                <option value="Mitchells Plain District Hospital">Mitchells Plain District Hospital</option>
+                <option value="Somerset Hospital">Somerset Hospital</option>
+            </select>
+        </div>
+    </div>
+
+
+
+    <div id="buttonContainer">
+        <button id="shareLocation" onclick="shareLocation()">Share Location</button>
+        <button id="requestAmbulance" onclick="requestAmbulance()">Request Ambulance</button>
+        <button id="cancelBtn" class="cancel-button" onclick="cancelAmbulanceRequest()">Cancel Ambulance Request</button>
+    </div>
+
+    <div id="etaDisplay">ETA: <span id="eta"></span></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Menu toggle functionality
+        const menuBtn = document.querySelector('.menu-btn');
+        const menu = document.querySelector('.menu');
+        let menuOpen = false;
+
+        menuBtn.addEventListener('click', () => {
+            if (!menuOpen) {
+                menuBtn.classList.add('open');
+                menu.classList.add('show');
+                menuOpen = true;
+            } else {
+                menuBtn.classList.remove('open');
+                menu.classList.remove('show');
+                menuOpen = false;
+            }
+        });
+    </script>
+</body>
+</html>
